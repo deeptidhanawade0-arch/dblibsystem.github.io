@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Library Feedback Form</title>
+  <style>
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url("C:/Users/Deepti/OneDrive/Documents/Deepti/Project/image1.jpeg")no-repeat center center/cover;
+      opacity: 0.75;
+      z-index: -1;
+    }
+	
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      height: 100vh;
+    }
+	header
+	{
+		height: 150px;
+		width: 1550px;
+		background-color: #1b366b;
+	}
+	.logo
+	{ 
+		float: left;
+		padding-left: 80px;
+	}
+	.logo img
+	{
+		padding-left: 20px;
+		height: 150px;
+		width: 150px;
+	}
+	li a
+	{
+		color: white;
+		text-decoration: none;
+	}
+	nav
+	{
+		float: right;
+		word-spacing: 30px;
+		padding: 30px;
+	}
+	nav li
+	{
+		display: inline-block;
+		line-height:100px;
+	}
+    .feedback-container {
+      background: #ffffff;
+	  margin: 20px auto;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      width: 400px;
+      max-width: 95%;
+    }
+
+    .feedback-container h2 {
+      text-align: center;
+      color: #34495e;
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin: 10px 0 5px;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      margin-bottom: 15px;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      border-color: #16a085;
+      outline: none;
+      box-shadow: 0 0 5px rgba(22,160,133,0.3);
+    }
+
+    textarea {
+      resize: none;
+      height: 100px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background: #16a085;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #13856e;
+    }
+
+    /* Popup Styling */
+    .popup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.8);
+      background: #ffffff;
+      padding: 20px 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      text-align: center;
+      z-index: 1000;
+      opacity: 0;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .popup.active {
+      display: block;
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    .popup h3 {
+      margin: 0;
+      color: #16a085;
+    }
+
+    .popup button {
+      margin-top: 15px;
+      background: #16a085;
+      border: none;
+      padding: 10px 20px;
+      color: #fff;
+      font-size: 14px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .popup button:hover {
+      background: #13856e;
+    }
+
+    /* Overlay */
+    .overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.4);
+      z-index: 999;
+    }
+	.wrapper
+	{
+		height: 700px;
+		width: 1450px;
+		/*background-color: red;*/
+	}
+    .overlay.active {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+<div class="wrapper">
+	<header>
+	  	<div class="logo">
+	  	<img src="logo.jpeg">
+	  </div>
+		<nav>
+			<ul>
+				<li><a href="index.html">HOME</a></li>
+				<li><a href="student_login.html">STUDENT-LOGIN</a></li>
+				<li><a href="admin_login.html">ADMIN-LOGIN</a></li>
+				<li><a href="Feedback_form.html">FEEDBACK</a></li>
+			</ul>
+		</nav>
+	</header>
+	<br> <br> <br>
+  <div class="feedback-container">
+    <h2>Library Feedback</h2>
+    <form id="feedbackForm">
+      <label for="name">Full Name:</label>
+      <input type="text" id="name" placeholder="Enter your name" required>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" placeholder="Enter your email" required>
+
+      <label for="rating">Rating:</label>
+      <select id="rating" required>
+        <option value="">-- Select Rating --</option>
+        <option value="5">Excellent</option>
+        <option value="4">Good</option>
+        <option value="3">Average</option>
+        <option value="2">Poor</option>
+        <option value="1">Very Poor</option>
+      </select>
+
+      <label for="comments">Comments:</label>
+      <textarea id="comments" placeholder="Write your feedback..." required></textarea>
+
+      <button type="submit">Submit Feedback</button>
+    </form>
+  </div>
+</div>
+  <!-- Popup and Overlay -->
+  <div class="overlay" id="overlay"></div>
+  <div class="popup" id="popup">
+    <h3>✅ Thank you for your feedback!</h3>
+    <button onclick="closePopup()">OK</button>
+  </div>
+
+  <script>
+    const form = document.getElementById("feedbackForm");
+    const popup = document.getElementById("popup");
+    const overlay = document.getElementById("overlay");
+
+    form.addEventListener("submit", function(event){
+      event.preventDefault();
+
+      // Get values
+      let name = document.getElementById("name").value;
+      let email = document.getElementById("email").value;
+      let rating = document.getElementById("rating").value;
+      let comments = document.getElementById("comments").value;
+
+      if(name && email && rating && comments){
+        // Show popup with animation
+        popup.classList.add("active");
+        overlay.classList.add("active");
+
+        // Reset form
+        form.reset();
+      }
+    });
+
+    function closePopup(){
+      popup.classList.remove("active");
+      overlay.classList.remove("active");
+	  window.location.href = "index.html";
+    return true;
+    }
+  </script>
+
+</body>
+</html>

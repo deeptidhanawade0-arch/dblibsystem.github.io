@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>📚 Add Books</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url("C:/Users/Deepti/OneDrive/Documents/Deepti/Project/image1.jpeg") no-repeat center center/cover;
+      opacity: 0.75;
+      z-index: -1;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f9;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background: #1b366b;
+      color: white;
+      padding: 15px;
+      text-align: center;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 240px;
+      background: #1b366b;
+      color: white;
+      height: 100vh;
+      position: fixed;
+      left: 0;
+      top: 0;
+      padding-top: 20px;
+      transition: width 0.4s ease;
+      overflow: hidden;
+    }
+
+    .sidebar.collapsed {
+      width: 70px;
+    }
+
+    .sidebar a {
+      display: flex;
+      align-items: center;
+      padding: 12px 20px;
+      color: white;
+      text-decoration: none;
+      transition: background 0.3s;
+      font-size: 14px;
+    }
+
+    .sidebar a i {
+      margin-right: 10px;
+      font-size: 18px;
+    }
+
+    .sidebar a:hover {
+      background: #2c3e50;
+      padding-left: 30px;
+    }
+
+    .toggle-btn {
+      position: absolute;
+      top: 20px;
+      right: -20px;
+      background: #16a085;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      color: white;
+      font-size: 18px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    }
+
+    /* Main container */
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+	  align-item: center;
+    }
+
+    /* Form */
+    form {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    input {
+      flex: 1;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    button {
+      padding: 10px 15px;
+      background: #16a085;
+      border: none;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #138d75;
+    }
+
+    /* Table */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 10px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background: #f0f0f0;
+    }
+
+    .delete-btn {
+      background: #16a085;
+      padding: 5px 10px;
+      border-radius: 6px;
+    }
+
+    .delete-btn:hover {
+      background: #16a085;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>📚 Add Books</h1>
+  </header>
+
+  <div class="sidebar" id="sidebar">
+    <h4><i class="fas fa-user"></i> Admin Dashboard</h4>
+    <div class="toggle-btn" onclick="toggleSidebar()"><i class="fas fa-angle-left"></i></div>
+    <a href="index.html"><i class="fa-solid fa-home"></i><span class="link-text">Home</span></a>
+    <a href="File2.html"><i class="fa-solid fa-dashboard"></i><span class="link-text">Dashboard</span></a>
+    <a href="add_books.html"><i class="fas fa-book-medical"></i><span class="link-text">Add Books</span></a>
+    <a href="manage_books.html" class="active"><i class="fas fa-book"></i><span class="link-text">Manage Books</span></a>
+    <a href="add_members.html"><i class="fas fa-user-plus"></i><span class="link-text">Add Members</span></a>
+    <a href="manage_members.html"><i class="fas fa-users"></i><span class="link-text">Manage Members</span></a>
+	<a href="readers_list.html"><i class="fas fa-user"></i><span class="link-text">Reader's List</span></a>
+    <a href="search_bar.html"><i class="fas fa-search"></i><span class="link-text">Search Books</span></a>
+    <a href="reports.html"><i class="fas fa-chart-line"></i><span class="link-text">Reports</span></a>
+    <a href="about_us.html"><i class="fas fa-info-circle"></i><span class="link-text">About Us</span></a>
+  </div>
+
+  <div class="container">
+    <h2>Add a New Book</h2>
+    <form id="bookForm">
+      <input type="text" id="title" placeholder="Book Title" required>
+      <input type="text" id="author" placeholder="Author" required>
+      <button type="submit">Add Book</button>
+    </form>
+
+    <h2>Book List</h2>
+    <table id="bookTable">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Author</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr id="rows">
+		  <td> To Kill a Mockingbird </td>
+		  <td> Harper Lee </td>
+		  <td> <button class="delete-btn"> Delete </button> </td>
+		</tr>
+		<tr>
+		  <td> 1984 </td>
+		  <td> George Orwell </td>
+		  <td> <button class="delete-btn"> Delete </button> </td>
+		</tr>
+		<tr>
+		  <td> Pride and Prejudice </td>
+		  <td> Jane Austen </td>
+		  <td> <button class="delete-btn"> Delete </button> </td>
+		</tr>
+		<tr>
+		  <td> The Great Gatsby </td>
+		  <td> F. Scott Fitzgerald </td>
+		  <td> <button class="delete-btn"> Delete </button> </td>
+		</tr>
+		<tr>
+		  <td> War and Peace </td>
+		  <td> Leo Tolstoy </td>
+		  <td> <button class="delete-btn"> Delete </button> </td>
+		</tr>
+		<tr>
+		  <td> Harry Potter and the Sorcerer’s Stone </td>
+		  <td> J.K. Rowling </td>
+		  <td> <button class="delete-btn"> Delete </button> </td>
+		</tr>
+		<tr>
+		  <td> Life of Pi</td>
+		  <td> Yann Martel</td>
+		  <td> <button class="delete-btn"> Delete </button> </td>
+		</tr>
+		<tr>
+		  <td> A Game of Thrones </td>
+		  <td> George R.R. Martin</td>
+		  <td> <button class="delete-btn"> Delete </button> </td>
+		</tr>
+		<tr>
+		  <td> The Alchemist </td>
+		  <td> Paulo Coelho </td>
+		  <td> <button class="delete-btn"> Delete </button> </td>
+		</tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    function toggleSidebar() {
+      const sidebar = document.getElementById("sidebar");
+      sidebar.classList.toggle("collapsed");
+      const icon = sidebar.querySelector(".toggle-btn i");
+      icon.classList.toggle("fa-angle-left");
+      icon.classList.toggle("fa-angle-right");
+    }
+
+    const bookForm = document.getElementById('bookForm');
+    const bookTable = document.getElementById('bookTable').getElementsByTagName('tbody')[0];
+
+    // Add book
+    bookForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const title = document.getElementById('title').value.trim();
+      const author = document.getElementById('author').value.trim();
+
+      if (title && author) {
+        const row = bookTable.insertRow();
+
+        const cell1 = row.insertCell(0);
+        const cell2 = row.insertCell(1);
+        const cell3 = row.insertCell(2);
+
+        cell1.textContent = title;
+        cell2.textContent = author;
+
+        const deleteBtn = document.createElement('button');
+        deleteBtn.textContent = 'Delete';
+        deleteBtn.className = 'delete-btn';
+        deleteBtn.onclick = function() {
+          bookTable.deleteRow(row.rowIndex - 1);
+        };
+
+        cell3.appendChild(deleteBtn);
+
+        // Clear input fields
+        document.getElementById('title').value = '';
+        document.getElementById('author').value = '';
+      }
+    });
+
+    // Handle delete for existing rows
+    document.querySelectorAll('.delete-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const row = this.closest('tr');
+        row.remove();
+      });
+    });
+  </script>
+</body>
+</html>

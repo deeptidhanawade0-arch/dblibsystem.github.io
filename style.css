@@ -1,0 +1,217 @@
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+    margin:0;
+    padding:0;
+    border:0;
+    outline:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+
+body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url("C:/Users/Deepti/OneDrive/Documents/Deepti/Project/image1.jpeg")no-repeat center center/cover;
+      opacity: 0.75;
+      z-index: -1;
+    }
+	
+body {
+    line-height:1;
+}
+
+article,aside,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section {
+    display:block;
+}
+
+nav ul {
+    list-style:none;
+}
+
+blockquote, q {
+    quotes:none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content:'';
+    content:none;
+}
+
+a {
+    margin:0;
+    padding:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+
+/* change colours to suit your needs */
+ins {
+    background-color:#ff9;
+    color:#000;
+    text-decoration:none;
+}
+
+/* change colours to suit your needs */
+mark {
+    background-color:#ff9;
+    color:#000;
+    font-style:italic;
+    font-weight:bold;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+abbr[title], dfn[title] {
+    border-bottom:1px dotted;
+    cursor:help;
+}
+
+table {
+    border-collapse:collapse;
+    border-spacing:0;
+}
+
+/* change border colour to suit your needs */
+hr {
+    display:block;
+    height:1px;
+    border:0;  
+    border-top:1px solid #cccccc;
+    margin:1em 0;
+    padding:0;
+}
+
+input, select {
+    vertical-align:middle;
+}
+
+/*------------------------------------------------------------------------------------ main code*/
+
+.wrapper
+{
+    height: 700px;
+    width: 1450px;
+    /*background-color: red;*/
+}
+header
+{
+    height: 150px;
+    width: 1550px;
+    background-color: #1b366b;
+}
+section
+{
+    height: 480px;
+    width: 1530px;
+}
+footer
+{
+    height: 150px;
+    width: 1530px;
+    background-color: #34495E;
+}
+.logo
+{ 
+    float: left;
+    padding-left: 80px;
+}
+.logo img
+{
+    padding-left: 20px;
+	height: 150px;
+	width: 150px;
+}
+li a
+{
+    color: white;
+    text-decoration: none;
+}
+nav
+{
+    float: right;
+    word-spacing: 30px;
+    padding: 30px;
+}
+nav li
+{
+    display: inline-block;
+    line-height:100px;
+}
+
+.box
+{
+    height: 300px;
+    width: 450px;
+    background-color: black;
+    margin: 20px auto;
+    opacity: .6;
+    color: white;
+}
+/*---------------------------------------------------------------student login---------------------------------------------------------*/
+
+.log_img
+{
+    height: 480px;
+    margin-top: 0px;
+}
+.box1
+{
+    height: 300px;
+    width: 350px;
+    background-color: black;
+    margin: 60px auto;
+    opacity: .6;
+    color: white;
+    padding: 25px;
+}
+form .login
+{
+    margin:  auto 30px;
+}
+input
+{
+    height: 20px;
+    width: 280px;
+}
+/*------------------------------------------------------------- Registration form-------------------------------------------------*/
+.box2
+{
+    height: 580px;
+    width: 450px;
+    background-color: #070700;
+    margin: 20px auto;
+    opacity: .9;
+    color: white;
+}
+button {
+		background: white;       
+		color: black;            
+		padding: 5px 20px;        /* Space inside */
+		border: none;              /* Remove default border */
+		border-radius: 8px;        /* Rounded corners */
+		font-size: 16px;           /* Text size */
+		cursor: pointer;           /* Hand cursor */
+		transition: background 0.3s, transform 0.2s;
+	}
+	
+	

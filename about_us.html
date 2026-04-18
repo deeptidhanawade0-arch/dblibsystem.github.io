@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <title>About Us - SmartLib</title>
+  <style>
+	body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url("C:/Users/Deepti/OneDrive/Documents/Deepti/Project/image1.jpeg") no-repeat center center/cover;
+      opacity: 0.75;
+      z-index: -1;
+    }
+	
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f5f7fa;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(#1b366b);
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+    }
+
+    section {
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    h2 {
+      color: white;
+      border-left: 5px solid #007bff;
+      padding-left: 10px;
+      margin-bottom: 20px;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      margin: 15px 0;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      transition: transform 0.2s ease-in-out;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    .values span {
+      display: inline-block;
+      margin: 5px 15px 5px 0;
+      padding: 8px 12px;
+      background: #e9f2ff;
+      border-radius: 20px;
+      font-weight: bold;
+      color: #0056b3;
+    }
+
+    blockquote {
+      font-style: italic;
+      background: #eef5ff;
+      border-left: 5px solid #007bff;
+      margin: 10px 0;
+      padding: 10px 15px;
+      border-radius: 5px;
+    }
+
+    footer {
+      background: #1b366b;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 20px;
+    }
+
+    a {
+      color: #007bff;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+	.sidebar {
+      width: 240px;
+      background: #1b366b;
+      color: white;
+      height: 100vh;
+      position: fixed;
+      left: 0;
+      top: 0;
+      padding-top: 20px;
+      transition: width 0.4s ease;
+      overflow: hidden;
+    }
+
+    .sidebar.collapsed {
+      width: 70px;
+    }
+
+    .sidebar a {
+      display: flex;
+      align-items: center;
+      padding: 12px 20px;
+      color: white;
+      text-decoration: none;
+      transition: background 0.3s;
+      font-size: 14px;
+    }
+
+    .sidebar a i {
+      margin-right: 10px;
+      font-size: 18px;
+    }
+
+    .sidebar a:hover {
+      background: #34495e;
+	  padding-left: 30px;
+    }
+
+    .toggle-btn {
+      position: absolute;
+      top: 20px;
+      right: -20px;
+      background: #16a085;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      color: white;
+      font-size: 18px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    }
+	
+  </style>
+</head>
+<body>
+  <header>
+    <img src="C:\Users\Deepti\OneDrive\Documents\Deepti\Project\logo.jpeg" alt="SmartLibLogo" width="180">
+    <h1>Land Of Books</h1>
+    <h3>Where every page opens a new world</h3>
+  </header>
+	<div class="sidebar" id="sidebar">
+	<h4><i class="fas fa-user"></i> Admin Dashboard</h4>
+    <div class="toggle-btn" onclick="toggleSidebar()"><i class="fas fa-angle-left"></i></div>
+	<a href="index.html"><i class="fa-solid fa-home"></i><span class="link-text">Home</span></a>
+    <a href="File2.html"><i class="fa-solid fa-dashboard"></i><span class="link-text">Dashboard</span></a>
+    <a href="add_books.html"><i class="fas fa-book-medical"></i><span class="link-text">Add Books</span></a>
+    <a href="manage_books.html"><i class="fas fa-book"></i><span class="link-text">Manage Books</span></a>
+    <a href="add_members.html"><i class="fas fa-user-plus"></i><span class="link-text">Add Members</span></a>
+    <a href="manage_members.html"><i class="fas fa-users"></i><span class="link-text">Manage Members</span></a>
+    <a href="readers_list.html"><i class="fas fa-user"></i><span class="link-text">Reader's List</span></a>
+    <a href="search_bar.html"><i class="fas fa-search"></i><span class="link-text">Search Books</span></a>
+    <a href="reports.html"><i class="fas fa-chart-line"></i><span class="link-text">Reports</span></a>
+    <a href="about_us.html"><i class="fas fa-info-circle"></i><span class="link-text">About Us</span></a>
+	</div>
+  <section>
+    <h2>Introduction</h2>
+    <div class="card">
+      <p>SmartLib is a digital Library Management System designed to make book handling, membership tracking, and report generation faster and easier. We help schools, colleges, and organizations manage their libraries efficiently.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Mission & Vision</h2>
+    <div class="card">
+      <p><strong>Mission:</strong> Our mission is to simplify library operations by reducing paperwork, saving time, and ensuring accurate book and member records.</p>
+      <p><strong>Vision:</strong> To become the leading platform for smart and digital library solutions, making every library fully automated and user-friendly.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Our Team</h2>
+    <div class="card">
+      <p><strong>Founder & Developer:</strong> Subodh (System Designer)</p>
+      <p><strong>Support Team:</strong> Technical & Customer Service experts</p>
+      <h3>Company Culture / Values</h3>
+      <div class="values">
+        <span>📖 Knowledge First</span>
+        <span>💡 Innovation</span>
+        <span>✅ Accuracy</span>
+        <span>🤝 Customer-Centric</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Services / Products</h2>
+    <div class="card">
+      <h3>What We Offer</h3>
+      <ul>
+        <li>Book entry & catalog management</li>
+        <li>Reader/member registration</li>
+        <li>Issue & return tracking</li>
+        <li>Fine calculation & reminders</li>
+        <li>Report generation (daily, weekly, monthly)</li>
+      </ul>
+
+      <h3>Unique Selling Points</h3>
+      <ul>
+        <li>Easy-to-use interface</li>
+        <li>Saves time and reduces manual errors</li>
+        <li>Suitable for schools, colleges, and public libraries</li>
+        <li>Affordable and customizable</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Contact Us</h2>
+    <div class="card">
+      <p>Email: <a href="mailto:smartlib.info@gmail.com">smartlib.info@gmail.com</a></p>
+      <p>Phone: +91-9876543210</p>
+      <p>Address: Pune, Maharashtra, India</p>
+      <p>
+        Facebook: <a href="https://facebook.com/smartlib">facebook.com/smartlib</a><br>
+        Instagram: <a href="https://instagram.com/smartlib">instagram.com/smartlib</a><br>
+        LinkedIn: <a href="https://linkedin.com/company/smartlib">linkedin.com/company/smartlib</a>
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Timeline / History</h2>
+    <div class="card">
+      <ul>
+        <li>2023: Idea conceptualized</li>
+        <li>2024: First version developed</li>
+        <li>2025: Expanded to schools and colleges</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Testimonials</h2>
+    <div class="card">
+      <blockquote>“SmartLib made our library management smooth and hassle-free!” – College Librarian</blockquote>
+      <blockquote>“Reports and fine tracking are now so easy.” – School Administrator</blockquote>
+    </div>
+  </section>
+
+  <section>
+    <h2>Achievements</h2>
+    <div class="card">
+      <ul>
+        <li>Used by 20+ institutions in the first year</li>
+        <li>Recognized as a reliable tool for academic libraries</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Future Plans</h2>
+    <div class="card">
+      <ul>
+        <li>Mobile app integration</li>
+        <li>AI-powered book recommendations</li>
+        <li>Cloud-based multi-branch support</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 SmartLib. All rights reserved.</p>
+  </footer>
+
+</body>
+<script>
+function toggleSidebar() {
+      const sidebar = document.getElementById("sidebar");
+      sidebar.classList.toggle("collapsed");
+      const icon = sidebar.querySelector(".toggle-btn i");
+      icon.classList.toggle("fa-angle-left");
+      icon.classList.toggle("fa-angle-right");
+    }
+</script>
+</html>

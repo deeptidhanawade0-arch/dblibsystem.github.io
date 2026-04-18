@@ -1,0 +1,260 @@
+<html>
+	<head>
+		<title> manage_members </title>
+	    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+		<style>
+	body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url("C:/Users/Deepti/OneDrive/Documents/Deepti/Project/image1.jpeg")no-repeat center center/cover;
+      opacity: 0.75;
+      z-index: -1;
+    }
+	
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f9;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background: #1b366b;
+      color: white;
+      padding: 15px;
+      text-align: center;
+    }
+	
+	.sidebar {
+      width: 240px;
+      background: #1b366b;
+      color: white;
+      height: 100vh;
+      position: fixed;
+      left: 0;
+      top: 0;
+      padding-top: 20px;
+      transition: width 0.4s ease;
+      overflow: hidden;
+    }
+
+    .sidebar.collapsed {
+      width: 70px;
+    }
+
+    .sidebar h2, .sidebar p {
+      margin: 5px 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .sidebar.collapsed h2, .sidebar.collapsed p {
+      opacity: 0;
+    }
+
+    .sidebar a {
+      display: flex;
+      align-items: center;
+      padding: 12px 20px;
+      color: white;
+      text-decoration: none;
+      transition: background 0.3s, padding 0.4s;
+      font-size: 14px;
+    }
+
+    .sidebar a i {
+      margin-right: 10px;
+      min-width: 20px;
+      text-align: center;
+      font-size: 18px;
+      transition: transform 0.3s;
+    }
+
+    .sidebar a:hover {
+      background: #34495e;
+      padding-left: 30px;
+    }
+
+    .sidebar a.active {
+      background: #16a085;
+    }
+	
+	.container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+	  text-align: center;
+    }
+
+	.toggle-btn {
+      position: absolute;
+      top: 20px;
+      right: -20px;
+      background: #16a085;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      color: white;
+      font-size: 18px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease;
+    }
+	
+	.btn {
+		background: #16a085;       /* Green-teal background */
+		color: white;              /* White text */
+		padding: 5px 20px;        /* Space inside */
+		border: none;              /* Remove default border */
+		border-radius: 8px;        /* Rounded corners */
+		font-size: 16px;           /* Text size */
+		cursor: pointer;           /* Hand cursor */
+		transition: background 0.3s, transform 0.2s;
+	}
+
+	.btn:hover {
+		background: #138d75;       /* Darker shade on hover */
+		transform: translateY(-2px); /* Lift effect */
+	}
+
+	.btn:active {
+		background: #117a65;       /* Even darker on click */
+		transform: translateY(1px); /* Pressed effect */
+	}
+		</style>
+	</head>
+<body>
+	<header> 
+    <h1>🧑🏻‍🎓 Manage Members </h1>
+	</header>
+	
+	<div class="sidebar" id="sidebar">
+	<h4><i class="fas fa-user"></i> Admin Dashboard</h4>
+    <div class="toggle-btn" onclick="toggleSidebar()"><i class="fas fa-angle-left"></i></div>
+	<a href="index.html"><i class="fa-solid fa-home"></i><span class="link-text">Home</span></a>
+    <a href="File2.html"><i class="fa-solid fa-dashboard"></i><span class="link-text">Dashboard</span></a>
+    <a href="add_books.html"><i class="fas fa-book-medical"></i><span class="link-text">Add Books</span></a>
+    <a href="manage_books.html"><i class="fas fa-book"></i><span class="link-text">Manage Books</span></a>
+    <a href="add_members.html"><i class="fas fa-user-plus"></i><span class="link-text">Add Members</span></a>
+    <a href="manage_members.html"><i class="fas fa-users"></i><span class="link-text">Manage Members</span></a>
+    <a href="readers_list.html"><i class="fas fa-user"></i><span class="link-text">Reader's List</span></a>
+    <a href="search_bar.html"><i class="fas fa-search"></i><span class="link-text">Search Books</span></a>
+    <a href="reports.html"><i class="fas fa-chart-line"></i><span class="link-text">Reports</span></a>
+    <a href="about_us.html"><i class="fas fa-info-circle"></i><span class="link-text">About Us</span></a>
+	</div>
+  
+	<div class="container">
+	<h2> Member List </h2>
+	<table id="memberTable" width="100%" border="2" cellpadding="5px">
+	<thead>
+        <tr>
+          <th>Member_id</th>
+          <th>Name</th>
+          <th>Email_id</th>
+          <th>Contact</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr id="rows">
+		  <td> 1011 </td>
+		  <td> Pratik Sonavane </td>
+		  <td> pratiksonavane@gmail.com </td>
+		  <td> 2345678901 </td>
+		  <td> <button class="btn delete-btn"> Delete </button> </td>
+		</tr>
+		<tr>
+		  <td> 1012 </td>
+		  <td> Rashi Gaikwad </td>
+		  <td> rashigaikwad@gmail.com </td>
+		  <td> 1234567897 </td>
+		  <td> <button class="btn delete-btn"> Delete </button> </td>
+		</tr>
+		<tr>
+		  <td> 1013 </td>
+		  <td> Shrija Raisar </td>
+		  <td> shrijaraisar@gmail.com </td>
+		  <td> 9087654321 </td>
+		  <td> <button class="btn delete-btn"> Delete </button> </td>
+		</tr>
+		<tr>
+		  <td> 1014 </td>
+		  <td> Anuj Sable </td>
+		  <td> anujsable@gmail.com </td>
+		  <td> 1029834756 </td>
+		  <td> <button class="btn delete-btn"> Delete </button> </td>
+		</tr>
+		<tr>
+		  <td> 1015 </td>
+		  <td> Vedant Kashyap </td>
+		  <td> vedantkashyap@gmail.com </td>
+		  <td> 1234567890 </td>
+		  <td> <button class="btn delete-btn"> Delete </button> </td>
+		</tr>
+		<tr>
+		  <td> 1016 </td>
+		  <td> Shraddha Kapoor </td>
+		  <td> shraddhakapoor@gmail.com </td>
+		  <td> 8529631478 </td>
+		  <td> <button class="btn delete-btn"> Delete </button> </td>
+		</tr>
+		<tr>
+		  <td> 1017 </td>
+		  <td> Palak Singh </td>
+		  <td> palaksingh@gmail.com </td>
+		  <td> 7419632589 </td>
+		  <td> <button class="btn delete-btn"> Delete </button> </td>
+		</tr>
+		<tr>
+		  <td> 1018 </td>
+		  <td> Janhvi Deshmukh </td>
+		  <td> janhvideshmukh@gmail.com </td>
+		  <td> 7898523694 </td>
+		  <td> <button class="btn delete-btn"> Delete </button> </td>
+		</tr>
+		<tr>
+		  <td> 1019 </td>
+		  <td> Sakshi Mohite </td>
+		  <td> sakshimohite@gmail.com </td>
+		  <td> 7897412586 </td>
+		  <td> <button class="btn delete-btn"> Delete </button> </td>
+		</tr>
+      </tbody>
+    </table>
+	</div>
+	
+	<script>
+	function toggleSidebar() {
+      const sidebar = document.getElementById("sidebar");
+      sidebar.classList.toggle("collapsed");
+      const icon = sidebar.querySelector(".toggle-btn i");
+      icon.classList.toggle("fa-angle-left");
+      icon.classList.toggle("fa-angle-right");
+    }
+	
+	// Delete row code
+  document.addEventListener("DOMContentLoaded", function() {
+    // Select all delete buttons
+    const deleteButtons = document.querySelectorAll("#memberTable .delete-btn");
+
+    deleteButtons.forEach(function(button) {
+      button.addEventListener("click", function() {
+        // Remove the parent row of the clicked button
+        const row = this.closest("tr");
+        row.remove();
+      });
+    });
+  });
+</script>
+	</script>
+</body>
+</html>

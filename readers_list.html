@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Library Report Details</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url("C:/Users/Deepti/OneDrive/Documents/Deepti/Project/image1.jpeg") no-repeat center center/cover;
+      opacity: 0.75;
+      z-index: -1;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f9;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background: #1b366b;
+      color: white;
+      padding: 15px;
+      text-align: center;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 240px;
+      background: #1b366b;
+      color: white;
+      height: 100vh;
+      position: fixed;
+      left: 0;
+      top: 0;
+      padding-top: 20px;
+      transition: width 0.4s ease;
+      overflow: hidden;
+    }
+
+    .sidebar.collapsed {
+      width: 70px;
+    }
+
+    .sidebar a {
+      display: flex;
+      align-items: center;
+      padding: 12px 20px;
+      color: white;
+      text-decoration: none;
+      transition: background 0.3s;
+      font-size: 14px;
+    }
+
+    .sidebar a i {
+      margin-right: 10px;
+      font-size: 18px;
+    }
+
+    .sidebar a:hover {
+      background: #34495e;
+	  padding-left: 30px;
+    }
+
+    .toggle-btn {
+      position: absolute;
+      top: 20px;
+      right: -20px;
+      background: #16a085;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      color: white;
+      font-size: 18px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    }
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+    form {
+      width: 50%;
+      margin: 20px auto;
+      background: #fff;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      border-radius: 8px;
+    }
+    input {
+      padding: 8px;
+      margin: 5px 10px 10px 0;
+      width: 200px;
+    }
+    button {
+      padding: 10px 15px;
+      background: #16a085;
+      border: none;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    table {
+      width: 50%;
+      margin: 20px auto;
+      border-collapse: collapse;
+      background: #fff;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    th, td {
+      padding: 12px;
+      border: 1px solid #ccc;
+      text-align: center;
+    }
+    th {
+      background-color: #16a085;
+      color: white;
+    }
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+    .delete-btn {
+      background: #16a085;
+      padding: 5px 10px;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+<header>
+    <h1>📖 Reader's List</h1>
+  </header>
+
+  <div class="sidebar" id="sidebar">
+    <h4><i class="fas fa-user"></i> Admin Dashboard</h4>
+    <div class="toggle-btn" onclick="toggleSidebar()"><i class="fas fa-angle-left"></i></div>
+    <a href="index.html"><i class="fa-solid fa-home"></i><span class="link-text">Home</span></a>
+    <a href="File2.html"><i class="fa-solid fa-dashboard"></i><span class="link-text">Dashboard</span></a>
+    <a href="add_books.html"><i class="fas fa-book-medical"></i><span class="link-text">Add Books</span></a>
+    <a href="manage_books.html" class="active"><i class="fas fa-book"></i><span class="link-text">Manage Books</span></a>
+    <a href="add_members.html"><i class="fas fa-user-plus"></i><span class="link-text">Add Members</span></a>
+    <a href="manage_members.html"><i class="fas fa-users"></i><span class="link-text">Manage Members</span></a>
+    <a href="readers_list.html"><i class="fas fa-user"></i><span class="link-text">Reader's List</span></a>
+    <a href="search_bar.html"><i class="fas fa-search"></i><span class="link-text">Search Books</span></a>
+    <a href="reports.html"><i class="fas fa-chart-line"></i><span class="link-text">Reports</span></a>
+    <a href="about_us.html"><i class="fas fa-info-circle"></i><span class="link-text">About Us</span></a>
+  </div>
+
+  <form id="reportForm">
+  <h2> Add Readers </h2>
+    <input type="text" id="memberId" placeholder="Sr. No" required>
+    <input type="text" id="name" placeholder="Name" required>
+    <input type="text" id="contactNo" placeholder="Contact No" required>
+    <input type="email" id="email" placeholder="Email" required>
+    <input type="text" id="bookTitle" placeholder="Book Title" required>
+    <input type="date" id="dateIssued" required>
+    <input type="text" id="timePeriod" placeholder="Time Period" required>
+    <input type="date" id="returnDate" required>
+    <button type="submit">Add</button>
+  </form>
+
+  <table id="reportTable">
+    <tr>
+      <th>Sr. no</th>
+      <th>Name</th>
+      <th>Contact No</th>
+      <th>Email</th>
+      <th>Time Period</th>
+      <th>Action</th>
+    </tr>
+    
+    <tr>
+      <td>101</td><td>Rahul Kadam</td><td>9876543210</td><td>rahul@example.com</td><td>15 days</td>
+      <td><button class="delete-btn">Delete</button></td>
+    </tr>
+    <tr>
+      <td>102</td><td>Pooja Sawant</td><td>9123456789</td><td>pooja@example.com</td><td>10 days</td>
+      <td><button class="delete-btn">Delete</button></td>
+    </tr>
+    <tr>
+      <td>103</td><td>Amit kohli</td><td>9988776655</td><td>amit@example.com</td><td>7 days</td>
+      <td><button class="delete-btn">Delete</button></td>
+    </tr>
+    <tr>
+      <td>104</td><td>Neha More</td><td>9090909090</td><td>neha@example.com</td><td>20 days</td>
+      <td><button class="delete-btn">Delete</button></td>
+    </tr>
+    <tr>
+      <td>105</td><td>Suresh Mane</td><td>9812345678</td><td>suresh@example.com</td><td>12 days</td>
+      <td><button class="delete-btn">Delete</button></td>
+    </tr>
+    <tr>
+      <td>106</td><td>Anita Das</td><td>9823456781</td><td>anita@example.com</td><td>18 days</td>
+      <td><button class="delete-btn">Delete</button></td>
+    </tr>
+    <tr>
+      <td>107</td><td>Vikram Bedi</td><td>9734567892</td><td>vikram@example.com</td><td>9 days</td>
+      <td><button class="delete-btn">Delete</button></td>
+    </tr>
+    <tr>
+      <td>108</td><td>Meena Kapoor</td><td>9645678934</td><td>meena@example.com</td><td>14 days</td>
+      <td><button class="delete-btn">Delete</button></td>
+    </tr>
+    <tr>
+      <td>109</td><td>Ramesh Kadam</td><td>9556789345</td><td>ramesh@example.com</td><td>11 days</td>
+      <td><button class="delete-btn">Delete</button></td>
+    </tr>
+    <tr>
+      <td>110</td><td>Kiran Singh</td><td>9467893456</td><td>kiran@example.com</td><td>8 days</td>
+      <td><button class="delete-btn">Delete</button></td>
+    </tr>
+    <tr>
+      <td>111</td><td>Priya Paras</td><td>9378934567</td><td>priya@example.com</td><td>16 days</td>
+      <td><button class="delete-btn">Delete</button></td>
+    </tr>
+    <tr>
+      <td>112</td><td>Deepak Khanna</td><td>9289345678</td><td>deepak@example.com</td><td>13 days</td>
+      <td><button class="delete-btn">Delete</button></td>
+    </tr>
+    <tr>
+      <td>113</td><td>Komal Hathi</td><td>9193456789</td><td>komal@example.com</td><td>17 days</td>
+      <td><button class="delete-btn">Delete</button></td>
+    </tr>
+    <tr>
+      <td>114</td><td>Arjun Kapoor</td><td>9084567890</td><td>arjun@example.com</td><td>19 days</td>
+      <td><button class="delete-btn">Delete</button></td>
+    </tr>
+    <tr>
+      <td>115</td><td>Sunita Bhide</td><td>9976543210</td><td>sunita@example.com</td><td>21 days</td>
+      <td><button class="delete-btn">Delete</button></td>
+    </tr>
+  </table>
+
+  <script>
+    const form = document.getElementById('reportForm');
+    const table = document.getElementById('reportTable');
+
+    
+    function addDeleteFunctionality(button) {
+      button.addEventListener('click', function() {
+        this.parentElement.parentElement.remove(); 
+      });
+    }
+
+    
+    document.querySelectorAll('.delete-btn').forEach(btn => addDeleteFunctionality(btn));
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const memberId = document.getElementById('memberId').value;
+      const name = document.getElementById('name').value;
+      const contactNo = document.getElementById('contactNo').value;
+      const email = document.getElementById('email').value;
+      const timePeriod = document.getElementById('timePeriod').value;
+
+      const row = table.insertRow();
+      row.insertCell(0).innerText = memberId;
+      row.insertCell(1).innerText = name;
+      row.insertCell(2).innerText = contactNo;
+      row.insertCell(3).innerText = email;
+      row.insertCell(4).innerText = timePeriod;
+
+      const actionCell = row.insertCell(5);
+      const deleteBtn = document.createElement('button');
+      deleteBtn.innerText = 'Delete';
+      deleteBtn.className = 'delete-btn';
+      addDeleteFunctionality(deleteBtn);
+      actionCell.appendChild(deleteBtn);
+
+      form.reset();
+    });
+  </script>
+
+</body>
+</html>
